@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "AspNet vNext Detecting..."
+
+exit 1
