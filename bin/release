@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # bin/release <build-dir>
 
 echo "AspNet vNext Releasing..."
