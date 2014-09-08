@@ -4,8 +4,6 @@
 build_dir=$1
 cache_dir=$2
 
-echo "AspNet vNext Compiling..."
-
 $build_dir/deploy/k.build
 
 # Expected steps in k.build file

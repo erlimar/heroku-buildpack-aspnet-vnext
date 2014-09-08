@@ -3,6 +3,4 @@
 # bin/release <build-dir>
 build_dir=$1
 
-echo "AspNet vNext Releasing..."
-
 $build_dir/deploy/k.release

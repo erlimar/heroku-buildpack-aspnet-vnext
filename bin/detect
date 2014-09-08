@@ -3,8 +3,6 @@
 # bin/detect <build-dir>
 build_dir=$1
 
-echo "AspNet vNext Detecting..."
-
 if [ -f $build_dir/deploy/k.build ]; then
   echo "AspNet.K"
   exit 0
