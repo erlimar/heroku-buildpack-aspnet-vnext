@@ -1,7 +1,18 @@
 #!/usr/bin/env bash
 
 # bin/compile <build-dir> <cache-dir>
+build_dir=$1
+cache_dir=$2
 
 echo "AspNet vNext Compiling..."
 
-$1/deploy/build
+$build_dir/deploy/k.build
+
+# Expected steps in k.build file
+## 1. Install Mono >= 3.4.1 (3.8.0 recommended)
+## 2. Install KVM
+## 3. Install KRE
+## 4. Prepare Procfile
+##    Ex: {
+##      echo "web: k web" > $build_dir/Procfile
+##    }

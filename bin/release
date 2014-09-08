@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # bin/release <build-dir>
+build_dir=$1
 
 echo "AspNet vNext Releasing..."
 
-$1/deploy/release
+$build_dir/deploy/k.release
