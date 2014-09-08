@@ -1,5 +1,10 @@
 #!/bin/sh
+# bin/detect <build-dir>
 
 echo "AspNet vNext Detecting..."
 
-exit 1
+if [ -f $1/deploy/build ]; then
+  echo "AspNetVNext" && exit 0
+else
+  echo "no" && exit 1
+fi

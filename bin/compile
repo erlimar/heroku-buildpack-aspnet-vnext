@@ -1,3 +1,6 @@
 #!/bin/sh
+# bin/compile <build-dir> <cache-dir>
 
 echo "AspNet vNext Compiling..."
+
+$1/deploy/build
