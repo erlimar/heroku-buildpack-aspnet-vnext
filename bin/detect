@@ -3,7 +3,7 @@
 # bin/detect <build-dir>
 build_dir=$1
 
-if [ -f $build_dir/deploy/k.build ]; then
+if [ -f $build_dir/deploy/kbuild ]; then
   echo "AspNet.K"
   exit 0
 else
