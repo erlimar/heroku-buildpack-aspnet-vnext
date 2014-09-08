@@ -9,3 +9,4 @@ Heroku buildpack for ASP.NET vNext
 * [heroku-buildpack-mono @BenHall](https://github.com/BenHall/heroku-buildpack-mono)
 * [heroku-buildpack-mono @friism](https://github.com/friism/heroku-buildpack-mono)
 * [heroku-buildpack-mono @brandur](https://github.com/brandur/heroku-buildpack-mono)
+* [heroku-buildpack-aptitude](https://github.com/gabrielfalcao/heroku-buildpack-aptitude)
