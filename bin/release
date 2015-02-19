@@ -3,4 +3,18 @@
 # bin/release <build-dir>
 build_dir=$1
 
-$build_dir/deploy/krelease $build_dir
+#$build_dir/deploy/krelease $build_dir
+
+# kbuild sample usage ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+# -----------------------------------------------------------
+
+# echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
+
+cat <<EOF
+---
+EOF
+
+cat <<EOF
+default_process_types:
+  web: k web --server.urls http://0.0.0.0
+EOF
