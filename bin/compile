@@ -62,9 +62,15 @@ mono --version
 
 # 2. Install KVM
 echo "-----> Install KVM..."
+curl -sSL https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.sh | sh && source ~/.kre/kvm/kvm.sh
 
 # 3. Install KRE
 echo "-----> Install KRE..."
+kvm upgrade
+
+# 3.1 Restore project packages...
+echo "-----> Restore project packages..."
+kpm restore
 
 # 4. Prepare Procfile
 echo "-----> Procfile..."
