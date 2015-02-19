@@ -40,6 +40,11 @@ function conditional_download() {
   fi
 }
 
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+
+echo "-----> LP_DIR:"
+echo "       $LP_DIR"
+
 cd ${build_dir}
 mkdir -p ${cache_dir}
 
@@ -54,6 +59,13 @@ ln -s "$build_dir/mono" /app
 
 export PATH="/app/mono/bin:${PATH}"
 export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
+
+# Add certs to trust store
+#cp -r ${LP_DIR}/.config ~/.
+#cp -r ${LP_DIR}/.config ${build_dir}/.
+
+mkdir -p ${build_dir}/.profile.d
+cp -n ${LP_DIR}/.profile.d/* ${build_dir}/.profile.d/
 
 echo "-----> MONO VERSION:"
 mono --version
