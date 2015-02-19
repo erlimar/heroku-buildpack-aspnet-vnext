@@ -10,11 +10,20 @@ build_dir=$1
 
 # echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
 
+#cat <<EOF
+#---
+#config_vars:
+#  PATH=/app/mono/bin:bin:/usr/bin:/bin:$PATH
+#  LD_LIBRARY_PATH=/app/mono/lib:$LD_LIBRARY_PATH
+#default_process_types:
+#  web: k web --server.urls http://0.0.0.0:$PORT
+#EOF
+
 cat <<EOF
 ---
-config_vars:
-  PATH=/app/mono/bin:bin:/usr/bin:/bin:$PATH
-  LD_LIBRARY_PATH=/app/mono/lib:$LD_LIBRARY_PATH
+EOF
+
+cat <<EOF
 default_process_types:
-  web: k web --server.urls http://0.0.0.0:$PORT
+  web: k web --server.urls http://0.0.0.0
 EOF
