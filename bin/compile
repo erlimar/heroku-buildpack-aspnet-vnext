@@ -128,8 +128,8 @@ kpm restore
 
 # default Procfile
 if [ ! -r $build_dir/Procfile ]; then
-    echo "       No Procfile; using \"web: k web --server.urls http://0.0.0.0:$PORT\"."
-    echo "web: k web --server.urls http://0.0.0.0:$PORT" > $build_dir/Procfile
+    echo "       No Procfile; using \"web: k web --server.urls http://0.0.0.0\"."
+    echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
 fi
 
 echo "-----> Build SUCCESS"
