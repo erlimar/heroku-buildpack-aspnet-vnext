@@ -110,7 +110,7 @@ echo "-----> Procfile..."
 echo "       $build_dir/Procfile"
 
 echo "-----> Aguardando release"
-echo "web: k web" > $build_dir/Procfile
+echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
 
 echo "-----> Procfile CAT..."
 cat $build_dir/Procfile
