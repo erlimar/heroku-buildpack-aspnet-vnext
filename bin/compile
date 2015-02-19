@@ -35,7 +35,7 @@ function conditional_download() {
   if [ ! -d ${DESTINATION} ]; then
     echo "-----> Conditional Download LS..."
     echo ${DESTINATION}
-    ls ${DESTINATION}
+    tree -d ${DESTINATION}
 
     rm -rf ${DESTINATION}
     mkdir -p ${DESTINATION}
@@ -52,7 +52,7 @@ MONO_CACHE_LOCATION=${cache_dir}/${STACK}/mono-${MONO_VERSION}
 conditional_download ${DEPENDENCY_S3_BUCKET_PATH}/${STACK}/mono-${MONO_VERSION}.tar.gz ${MONO_CACHE_LOCATION}
 
 echo "-----> LS..."
-ls ${MONO_CACHE_LOCATION}
+tree -d ${MONO_CACHE_LOCATION}
 
 # Copy mono from cache to where we're building the slug
 cp -r "${MONO_CACHE_LOCATION}/mono" .
@@ -75,7 +75,7 @@ echo "-----> Install KRE..."
 
 # 4. Prepare Procfile
 echo "-----> Build_dir LS..."
-ls ${$build_dir}
+tree -d ${$build_dir}
 cat $build_dir/Procfile
 
 echo "-----> Aguardando release"
