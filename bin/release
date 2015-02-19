@@ -3,18 +3,22 @@
 # bin/release <build-dir>
 build_dir=$1
 
-$build_dir/deploy/krelease $build_dir
+#$build_dir/deploy/krelease $build_dir
 
 # kbuild sample usage ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # -----------------------------------------------------------
 
 # echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
 
-cat <<EOF
----
-EOF
+export PATH="/app/mono/bin:${PATH}"
+export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
 
 cat <<EOF
+---
+addons: []
+config_vars:
+  PATH=/app/mono/bin:bin:/usr/bin:/bin:$PATH
+  LD_LIBRARY_PATH=/app/mono/lib:$LD_LIBRARY_PATH
 default_process_types:
-  web: k web --server.urls http://0.0.0.0
+  web: k web --server.urls http://0.0.0.0:$PORT
 EOF

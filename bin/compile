@@ -60,6 +60,13 @@ ln -s "$build_dir/mono" /app
 export PATH="/app/mono/bin:${PATH}"
 export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
 
+PROFILE_PATH="$build_dir/.profile.d"
+mkdir -p $(dirname $PROFILE_PATH)
+
+PROFILE_MONO="${PROFILE_PATH}/mono.sh"
+echo 'export PATH="/app/mono/bin:${PATH}"' >> $PROFILE_MONO
+echo 'export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"' >> $PROFILE_MONO
+
 # Add certs to trust store
 #cp -r ${LP_DIR}/.config ~/.
 #cp -r ${LP_DIR}/.config ${build_dir}/.
@@ -81,9 +88,9 @@ export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
 #remote:
 #remote: Type 'source /app/.kre/kvm/kvm.sh' to start using kvm
 ## ------------------------------------------------------------------------------
-echo "-----> ~/.profile CAT..."
-echo "[ -s \"~/.kre/kvm/kvm.sh\" ] && . \"~/.kre/kvm/kvm.sh\" # Load kvm" > ~/.profile
-cat ~/.profile
+#echo "-----> ~/.profile CAT..."
+#echo "[ -s \"~/.kre/kvm/kvm.sh\" ] && . \"~/.kre/kvm/kvm.sh\" # Load kvm" > ~/.profile
+#cat ~/.profile
 
 echo "-----> MONO VERSION:"
 mono --version
@@ -107,11 +114,13 @@ echo "-----> Restore project packages..."
 kpm restore
 
 # 4. Prepare Procfile
-echo "-----> Procfile..."
-echo "       $build_dir/Procfile"
+#echo "-----> Procfile..."
+#echo "       $build_dir/Procfile"
 
-echo "-----> Aguardando release"
-echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
+#echo "-----> Aguardando release"
+#echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
 
-echo "-----> Procfile CAT..."
-cat $build_dir/Procfile
+#echo "-----> Procfile CAT..."
+#cat $build_dir/Procfile
+
+echo "-----> Build SUCCESS"
