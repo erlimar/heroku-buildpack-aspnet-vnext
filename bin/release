@@ -12,7 +12,6 @@ build_dir=$1
 
 cat <<EOF
 ---
-addons: []
 config_vars:
   PATH=/app/mono/bin:bin:/usr/bin:/bin:$PATH
   LD_LIBRARY_PATH=/app/mono/lib:$LD_LIBRARY_PATH
