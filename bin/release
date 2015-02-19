@@ -10,9 +10,6 @@ build_dir=$1
 
 # echo "web: k web --server.urls http://0.0.0.0" > $build_dir/Procfile
 
-export PATH="/app/mono/bin:${PATH}"
-export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
-
 cat <<EOF
 ---
 addons: []
