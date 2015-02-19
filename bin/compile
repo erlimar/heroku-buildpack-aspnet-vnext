@@ -61,8 +61,8 @@ export PATH="/app/mono/bin:${PATH}"
 export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
 
 # Add certs to trust store
-#cp -r ${LP_DIR}/.config ~/.
-#cp -r ${LP_DIR}/.config ${build_dir}/.
+cp -r ${LP_DIR}/.config ~/.
+cp -r ${LP_DIR}/.config ${build_dir}/.
 
 mkdir -p ${build_dir}/.profile.d
 cp -n ${LP_DIR}/.profile.d/* ${build_dir}/.profile.d/
