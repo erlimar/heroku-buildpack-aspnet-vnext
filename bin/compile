@@ -126,4 +126,10 @@ kpm restore
 #echo "-----> Procfile CAT..."
 #cat $build_dir/Procfile
 
+# default Procfile
+if [ ! -r $build_dir/Procfile ]; then
+    echo "       No Procfile; using \"web: k web --server.urls http://0.0.0.0:$PORT\"."
+    echo "web: k web --server.urls http://0.0.0.0:$PORT" > $build_dir/Procfile
+fi
+
 echo "-----> Build SUCCESS"
