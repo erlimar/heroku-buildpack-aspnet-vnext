@@ -81,8 +81,9 @@ export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
 #remote:
 #remote: Type 'source /app/.kre/kvm/kvm.sh' to start using kvm
 ## ------------------------------------------------------------------------------
-
-
+echo "-----> ~/.profile CAT..."
+echo "[ -s \"~/.kre/kvm/kvm.sh\" ] && . \"~/.kre/kvm/kvm.sh\" # Load kvm" > ~/.profile
+cat ~/.profile
 
 echo "-----> MONO VERSION:"
 mono --version
