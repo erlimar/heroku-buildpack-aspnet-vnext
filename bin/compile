@@ -64,12 +64,33 @@ export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
 #cp -r ${LP_DIR}/.config ~/.
 #cp -r ${LP_DIR}/.config ${build_dir}/.
 
-mkdir -p ${build_dir}/.profile.d
+#mkdir -p ${build_dir}/.profile.d
 #cp -n ${LP_DIR}/.profile.d/* ${build_dir}/.profile.d/
+
+
+## TODO ------------------------------------------------------------------------
+#remote: -----> Install KVM...
+#remote: Downloading kvm as script to '/app/.kre/kvm'
+#remote:
+#remote: Profile not found. Tried ~/.bash_profile ~/.zshrc and ~/.profile.
+#remote: Create one of them and run this script again
+#remote:   OR
+#remote: Append the following line to the correct file yourself:
+#remote:
+#remote:  [ -s "/app/.kre/kvm/kvm.sh" ] && . "/app/.kre/kvm/kvm.sh" # Load kvm
+#remote:
+#remote: Type 'source /app/.kre/kvm/kvm.sh' to start using kvm
+## ------------------------------------------------------------------------------
+
+
 
 echo "-----> MONO VERSION:"
 mono --version
 
+echo "-----> Updating SSL certificates..."
+mozroots --import --sync
+yes | certmgr -ssl "https://www.myget.org"
+yes | certmgr -ssl "https://www.nuget.org"
 
 
 # 2. Install KVM
