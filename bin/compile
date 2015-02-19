@@ -34,7 +34,7 @@ function conditional_download() {
 
   if [ ! -d ${DESTINATION} ]; then
     echo "-----> Conditional Download LS..."
-    ${DESTINATION}
+    echo ${DESTINATION}
     ls ${DESTINATION}
 
     rm -rf ${DESTINATION}
