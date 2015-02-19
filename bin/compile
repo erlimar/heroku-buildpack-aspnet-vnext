@@ -24,17 +24,19 @@ $build_dir/deploy/kbuild $build_dir $cache_dir
 
 # 1. Install Mono >= 3.4.1 (3.8.0 recommended)
 ########## https://github.com/friism/heroku-buildpack-mono/blob/master/bin/compile
-DEPENDENCY_S3_BUCKET_PATH="http://s3.amazonaws.com/mono-dependencies/"
-MONO_VERSION="3.12.0"
+DEPENDENCY_S3_BUCKET_PATH="http://s3.amazonaws.com/mono-dependencies"
+MONO_VERSION="3.10.0"
+STACK="cedar-14"
 
 function conditional_download() {
   DOWNLOAD_URL="$1"
   DESTINATION="$2"
 
   if [ ! -d ${DESTINATION} ]; then
-    echo "-----> Conditional Download..."
-    ls
-    
+    echo "-----> Conditional Download LS..."
+    ${DESTINATION}
+    ls ${DESTINATION}
+
     rm -rf ${DESTINATION}
     mkdir -p ${DESTINATION}
     echo "-----> Downloading ${DOWNLOAD_URL}"
@@ -45,11 +47,12 @@ function conditional_download() {
 cd ${build_dir}
 mkdir -p ${cache_dir}
 
-MONO_CACHE_LOCATION=${cache_dir}/mono-${MONO_VERSION}
+MONO_CACHE_LOCATION=${cache_dir}/${STACK}/mono-${MONO_VERSION}
 #http://s3.amazonaws.com/mono-dependencies/cedar-14/mono-3.10.0.tar.gz
-conditional_download ${DEPENDENCY_S3_BUCKET_PATH}/mono-${MONO_VERSION}.tar.gz ${MONO_CACHE_LOCATION}
+conditional_download ${DEPENDENCY_S3_BUCKET_PATH}/${STACK}/mono-${MONO_VERSION}.tar.gz ${MONO_CACHE_LOCATION}
 
-ls
+echo "-----> LS..."
+ls ${MONO_CACHE_LOCATION}
 
 # Copy mono from cache to where we're building the slug
 cp -r "${MONO_CACHE_LOCATION}/mono" .
@@ -59,24 +62,23 @@ ln -s "$build_dir/mono" /app
 export PATH="/app/mono/bin:${PATH}"
 export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
 
-echo "...... PATH:"
-echo ${PATH}
-
-echo "...... LD_LIBRARY_PATH:"
-echo ${LD_LIBRARY_PATH}
-
-echo "...... MONO VERSION:"
+echo "-----> MONO VERSION:"
 mono --version
 
 
 
 # 2. Install KVM
-echo Install KVM...
+echo "-----> Install KVM..."
 
 # 3. Install KRE
-echo Install KRE...
+echo "-----> Install KRE..."
 
 # 4. Prepare Procfile
-#    Ex: {
-#      echo "web: k web" > $build_dir/Procfile
-#    }
+echo "-----> Build_dir LS..."
+ls ${$build_dir}
+cat $build_dir/Procfile
+
+echo "-----> Aguardando release"
+echo "web: k web" > $build_dir/Procfile
+
+cat $build_dir/Procfile
