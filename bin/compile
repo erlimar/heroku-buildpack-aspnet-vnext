@@ -45,7 +45,7 @@ function conditional_download() {
 cd ${build_dir}
 mkdir -p ${cache_dir}
 
-MONO_CACHE_LOCATION=${CACHE_DIR}/mono-${MONO_VERSION}
+MONO_CACHE_LOCATION=${cache_dir}/mono-${MONO_VERSION}
 #http://s3.amazonaws.com/mono-dependencies/cedar-14/mono-3.10.0.tar.gz
 conditional_download ${DEPENDENCY_S3_BUCKET_PATH}/mono-${MONO_VERSION}.tar.gz ${MONO_CACHE_LOCATION}
 
@@ -54,7 +54,7 @@ ls
 # Copy mono from cache to where we're building the slug
 cp -r "${MONO_CACHE_LOCATION}/mono" .
 # Mono expects to be running out of /app
-ln -s "$BUILD_DIR/mono" /app
+ln -s "$build_dir/mono" /app
 
 export PATH="/app/mono/bin:${PATH}"
 export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"
