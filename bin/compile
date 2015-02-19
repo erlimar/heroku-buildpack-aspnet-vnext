@@ -32,6 +32,9 @@ function conditional_download() {
   DESTINATION="$2"
 
   if [ ! -d ${DESTINATION} ]; then
+    echo "-----> Conditional Download..."
+    ls
+    
     rm -rf ${DESTINATION}
     mkdir -p ${DESTINATION}
     echo "-----> Downloading ${DOWNLOAD_URL}"
