@@ -25,5 +25,5 @@ EOF
 
 cat <<EOF
 default_process_types:
-  web: k web --server.urls http://0.0.0.0
+  web: sh k web --server.urls http://0.0.0.0
 EOF
