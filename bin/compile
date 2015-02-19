@@ -64,7 +64,7 @@ PROFILE_PATH="$build_dir/.profile.d"
 mkdir -p $(dirname $PROFILE_PATH)
 
 PROFILE_MONO="${PROFILE_PATH}/mono.sh"
-echo 'export PATH="/app/mono/bin:${PATH}"' >> $PROFILE_MONO
+echo 'export PATH="/app/mono/bin:${PATH}"' > $PROFILE_MONO
 echo 'export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"' >> $PROFILE_MONO
 
 # Add certs to trust store
