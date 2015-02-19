@@ -33,10 +33,6 @@ function conditional_download() {
   DESTINATION="$2"
 
   if [ ! -d ${DESTINATION} ]; then
-    echo "-----> Conditional Download LS..."
-    echo ${DESTINATION}
-    tree -d ${DESTINATION}
-
     rm -rf ${DESTINATION}
     mkdir -p ${DESTINATION}
     echo "-----> Downloading ${DOWNLOAD_URL}"
@@ -50,9 +46,6 @@ mkdir -p ${cache_dir}
 MONO_CACHE_LOCATION=${cache_dir}/${STACK}/mono-${MONO_VERSION}
 #http://s3.amazonaws.com/mono-dependencies/cedar-14/mono-3.10.0.tar.gz
 conditional_download ${DEPENDENCY_S3_BUCKET_PATH}/${STACK}/mono-${MONO_VERSION}.tar.gz ${MONO_CACHE_LOCATION}
-
-echo "-----> LS..."
-tree -d ${MONO_CACHE_LOCATION}
 
 # Copy mono from cache to where we're building the slug
 cp -r "${MONO_CACHE_LOCATION}/mono" .
@@ -74,11 +67,11 @@ echo "-----> Install KVM..."
 echo "-----> Install KRE..."
 
 # 4. Prepare Procfile
-echo "-----> Build_dir LS..."
-tree -d ${$build_dir}
+echo "-----> Procfile 0..."
 cat $build_dir/Procfile
 
 echo "-----> Aguardando release"
 echo "web: k web" > $build_dir/Procfile
 
+echo "-----> Procfile 1..."
 cat $build_dir/Procfile
