@@ -65,6 +65,11 @@ mkdir -p $(dirname $PROFILE_MONO)
 echo 'export PATH="/app/mono/bin:${PATH}"' >> $PROFILE_MONO
 echo 'export LD_LIBRARY_PATH="/app/mono/lib:${LD_LIBRARY_PATH}"' >> $PROFILE_MONO
 
+PROFILE_K="$build_dir/.profile.d/k.sh"
+mkdir -p $(dirname $PROFILE_K)
+echo '[ -s \"~/.kre/kvm/kvm.sh\" ] && . \"~/.kre/kvm/kvm.sh\" # Load kvm' >> $PROFILE_K
+
+
 # Add certs to trust store
 #cp -r ${LP_DIR}/.config ~/.
 #cp -r ${LP_DIR}/.config ${build_dir}/.
