@@ -3,7 +3,7 @@
 # bin/release <build-dir>
 build_dir=$1
 
-#$build_dir/deploy/krelease $build_dir
+$build_dir/deploy/krelease $build_dir
 
 # kbuild sample usage ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 # -----------------------------------------------------------
