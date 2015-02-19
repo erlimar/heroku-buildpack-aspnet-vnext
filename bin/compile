@@ -67,11 +67,11 @@ echo "-----> Install KVM..."
 echo "-----> Install KRE..."
 
 # 4. Prepare Procfile
-echo "-----> Procfile 0..."
-cat $build_dir/Procfile
+echo "-----> Procfile..."
+echo "       $build_dir/Procfile"
 
 echo "-----> Aguardando release"
 echo "web: k web" > $build_dir/Procfile
 
-echo "-----> Procfile 1..."
+echo "-----> Procfile CAT..."
 cat $build_dir/Procfile
